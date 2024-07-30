@@ -108,11 +108,152 @@ Un événement est une action ou occurrence détectée par le navigateur (ex : c
 
 ## Exercice 1 : Dessiner un rectangle sur le Canvas au clic d'un bouton
 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>canvas</title>
+</head>
+<body>
+  <canvas id="canvas" width="500" height="500"></canvas>
+  <button id="create-rect">Créer un rectangle</button>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const createRect = document.getElementById('create-rect');
+
+    createRect.addEventListener('click', function() {
+        ctx.fillStyle = "red"
+        ctx.fillRect(200, 120, 150, 80);
+    })
+  </script>
+</body>
+</html>
+```
+
 ## Exercice 2 : Changer la couleur du rectangle au survol de la souris
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>canvas</title>
+</head>
+<body>
+  <canvas id="canvas" width="500" height="500"></canvas>
+  <button id="create-rect">Créer un rectangle</button>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const createRect = document.getElementById('create-rect');
+
+
+    createRect.addEventListener('click', function() {
+        ctx.fillStyle = "#0000FF"
+        ctx.fillRect(200, 120, 150, 80);
+    })
+
+    canvas.addEventListener('mouseenter', function() {
+        ctx.clearRect(200, 120, 150, 80)
+        ctx.fillStyle = "#F00"
+        ctx.fillRect(200, 120, 150, 80);
+    })
+
+
+    canvas.addEventListener('mouseout', function() {
+        ctx.clearRect(200, 120, 150, 80)
+        ctx.fillStyle = "#0000FF"
+        ctx.fillRect(200, 120, 150, 80);
+    })
+  </script>
+</body>
+</html>
+```
 
 ## Exercice 3 : Afficher un message quand la souris entre et sort d'une zone spécifique
 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>canvas</title>
+  <style>
+    *, ::before, ::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hoverArea {
+        width: 120px;
+        height: 120px;
+        background-color: coral;
+    }
+  </style>
+</head>
+<body>
+    <div class="hoverArea" ></div>
+    <script>
+        const hoverArea = document.querySelector('.hoverArea');
+
+        hoverArea.addEventListener('mouseenter', (e) => {
+        e.currentTarget.textContent = 'La sourie est rentré dans la zone'
+        })
+
+        hoverArea.addEventListener('mouseout', (e) => {
+        e.currentTarget.textContent = 'La sourie est sortie de la zone'
+        })
+    </script>
+</body>
+</html>
+```
+
 ## Exercice 4 : Changer la couleur d'un texte quand une touche est pressée
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>canvas</title>
+</head>
+<body>
+    <h1 class="title">Hello World !</h1>
+    <script>
+        const title = document.querySelector('.title');
+
+        window.addEventListener('keydown', (e) => {
+            switch (e.key) {
+                case 'y':
+                title.style.color = "#ff0";
+                break;
+                case 'b':
+                title.style.color = "#00f";
+                break;
+                case 'g':
+                title.style.color = "#0f0"
+                break;
+            }
+        })
+    </script>
+</body>
+</html>
+```
 
 ## Exercice 5 : Afficher les coordonnées de la souris sur la page
 

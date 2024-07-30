@@ -257,10 +257,47 @@ Un événement est une action ou occurrence détectée par le navigateur (ex : c
 
 ## Exercice 5 : Afficher les coordonnées de la souris sur la page
 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>canvas</title>
+  <style>
+    *, ::before, ::after {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mouse-coordinate {
+        font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+    <span class="mouse-coordinate">0,0</span>
+    <script>
+        const mouseCoordinateDisplay = document.querySelector('.mouse-coordinate');
+
+        window.addEventListener('mousemove', (e) => {
+            mouseCoordinateDisplay.textContent = e.offsetX + ',' + e.offsetY;
+        })
+    </script>
+</body>
+</html>
+```
+
 ## Exercice 6 : Ajouter un nouvel élément à une liste en cliquant sur un bouton
 
 ## Exercice 7 : Supprimer un élément d'une liste en cliquant sur cet élément
-
 
 ## Exercice 8 : Changer la couleur de fond de la page en cliquant sur un bouton
 

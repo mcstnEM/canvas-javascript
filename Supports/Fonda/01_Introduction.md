@@ -297,10 +297,152 @@ Un événement est une action ou occurrence détectée par le navigateur (ex : c
 
 ## Exercice 6 : Ajouter un nouvel élément à une liste en cliquant sur un bouton
 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Canvas JavaScript</title>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <ul class="liste"></ul>
+  <button id="btn">Créer un élément</button>
+</body>
+</html>
+```
+
+```javascript
+const liste = document.querySelector('.liste');
+
+const btn = document.getElementById('btn');
+
+btn.addEventListener('click', (event) => {
+  event.preventDefault();
+  const li = document.createElement('li');
+  li.textContent = "Hello";
+  liste.appendChild(li);
+})
+```
+
 ## Exercice 7 : Supprimer un élément d'une liste en cliquant sur cet élément
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Canvas JavaScript</title>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <ul class="liste"></ul>
+  <button id="btn">Créer un élément</button>
+</body>
+</html>
+```
+
+```javascript
+const liste = document.querySelector('.liste');
+
+const btn = document.getElementById('btn');
+
+btn.addEventListener('click', (event) => {
+  event.preventDefault();
+  const li = document.createElement('li');
+  li.textContent = "Hello";
+  liste.appendChild(li);
+})
+
+liste.addEventListener('click', event => {
+  liste.removeChild(event.target);
+})
+```
 
 ## Exercice 8 : Changer la couleur de fond de la page en cliquant sur un bouton
 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Canvas JavaScript</title>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <button id="btn">changer couleur de fond</button>
+</body>
+</html>
+```
+
+```javascript
+const changeBackgroundColorBtn = document.getElementById('btn');
+const body = document.body;
+
+
+changeBackgroundColorBtn.addEventListener('click', (event) => {
+  body.style.backgroundColor = '#f00';
+})
+```
+
 ## Exercice 9 : Compter le nombre de fois qu'un bouton est cliqué
 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Canvas JavaScript</title>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <button id="btn">Nombre de cliques : <span class="count">0</span></button>
+</body>
+</html>
+```
+
+```javascript
+const counterBtn = document.getElementById('btn');
+const countDisplay = counterBtn.querySelector('.count');
+
+let counter = 0;
+
+counterBtn.addEventListener('click', (event) => {
+  counter++;
+  countDisplay.textContent = counter;
+});
+```
+
 ## Exercice 10 : Afficher une alerte quand le formulaire est soumis
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Canvas JavaScript</title>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <form id="form">
+    <input type="text" name="firstname">
+    <button>Envoyer</button>
+  </form>
+</body>
+</html>
+```
+
+```javascript
+const form = document.getElementById('form');
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const formData = new FormData(event.currentTarget);
+  window.alert(formData.get('firstname'))
+});
+```
